@@ -1,0 +1,8 @@
+replicaCount: 1
+image:
+  repository: nameko/nameko-example-gateway
+  tag: latest
+  pullPolicy: IfNotPresent
+ingressPort: 80
+targetPort: 8000
+

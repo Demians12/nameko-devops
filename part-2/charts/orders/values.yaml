@@ -1,0 +1,5 @@
+replicaCount: 1
+image:
+  repository: nameko/nameko-example-orders
+  tag: latest
+  pullPolicy: IfNotPresent

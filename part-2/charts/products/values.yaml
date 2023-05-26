@@ -1,0 +1,5 @@
+replicaCount: 1
+image:
+  repository: nameko/nameko-example-products
+  tag: latest
+  pullPolicy: IfNotPresent
