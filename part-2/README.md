@@ -71,15 +71,14 @@ kubectl get secret --namespace nameko rabbitmq -o jsonpath="{.data.rabbitmq-pass
 ```bash
 kubectl create secret generic rabbitmq --from-literal=RABBIT_PASSWORD=password_from_command
 ```
-- Do the same to the others: <br>
-- Redis
+- Get Redis secret <br>
 ```bash
 kubectl get secret --namespace nameko cache-redis -o jsonpath="{.data.redis-password}" | base64 -d
 ```
 ```bash
 kubectl create secret generic cache-redis --from-literal=REDIS_PASSWORD=password_from_command
 ```
-- POSTGRES: <br>
+- Get POSTGRES secret: <br>
 ```bash
 kubectl get secret --namespace nameko db-postgresql -o jsonpath="{.data.postgres-password}" | base64 -d
 ``` 
