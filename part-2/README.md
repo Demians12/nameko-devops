@@ -1,6 +1,7 @@
 # PREPARE THE CLUSTER FOR THE APPLICATION
 
 ## INSTAL EBS CSI DRIVER TO THE DATABASE 
+That procedure must be made in the policies folder where are stored the policy files. <br>
 
 1. create policy for ebs: 
 ```bash
@@ -43,6 +44,70 @@ helm repo update
 ```bash
 helm upgrade --install nginx ingress-nginx/ingress-nginx --namespace nginx --create-namespace --set controller.ingressClassResource.default=true
 ```
+
+# OPTIONAL 
+## INSTALL THE AWS LOAD BALANCER CONTROLLER
+if you prefer to install the AWS LB controller instead Nginx controller you can follow these instructions:
+
+- Download policy for controller. But the same policy file is stored in the policies folder in this repository: <br>
+```bash
+curl -o iam_policy_latest.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/main/docs/install/iam_policy.json
+```
+- Create IAM Policy using policy downloaded: <br>
+```bash
+aws iam create-policy \
+    --policy-name AWSLoadBalancerControllerIAMPolicy \
+    --policy-document file://iam_policy_latest.json
+```
+- Get worker node iam role: <br>
+```bash
+kubectl -n kube-system describe configmap aws-auth
+```
+- Create service account for controller:
+```bash
+eksctl create iamserviceaccount \
+  --cluster=lab1-eks \
+  --namespace=kube-system \
+  --name=aws-load-balancer-controller \
+  --attach-policy-arn=arn:aws:iam::242364459859:policy/AWSLoadBalancerControllerIAMPolicy \
+  --override-existing-serviceaccounts \
+  --approve
+```
+- Add the eks-charts repository: <br>
+```bash
+helm repo add eks https://aws.github.io/eks-charts
+helm repo update
+```
+- List the vpc id. Use the vpc ID from the not default vpc: <br>
+```bash
+aws ec2 describe-vpcs
+```
+- Install the controller: <br>
+```bash
+helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
+  -n kube-system \
+  --set clusterName=lab1-eks \
+  --set serviceAccount.create=false \
+  --set serviceAccount.name=aws-load-balancer-controller \
+  --set region=us-east-1 \
+  --set vpcId=vpc-0557114f896436a3d \
+  --set image.repository=602401143452.dkr.ecr.us-east-1.amazonaws.com/amazon/aws-load-balancer-controller
+```
+- Verify that the controller is installed.
+```bash
+kubectl -n kube-system get deployment 
+kubectl -n kube-system get deployment aws-load-balancer-controller
+kubectl -n kube-system describe deployment aws-load-balancer-controller
+```
+- Verify Labels in Service and Selector Labels in Deployment
+```bash
+kubectl -n kube-system get svc aws-load-balancer-webhook-service -o yaml
+kubectl -n kube-system get deployment aws-load-balancer-controller -o yaml
+```
+Observation:
+1. Verify "spec.selector" label in "aws-load-balancer-webhook-service"
+2. Compare it with "aws-load-balancer-controller" Deployment "spec.selector.matchLabels"
+3. Both values should be same which traffic coming to "aws-load-balancer-webhook-service" on port 443 will be sent to port 9443 on "aws-load-balancer-controller" deployment related pods.
 
 ## DEPLOY THE RABBITMQ, POSTGRES AND REDIS:
 
