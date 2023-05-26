@@ -16,8 +16,8 @@ Once EKS cluster is up and running, It is necessary to prepare it for the applic
 
 ## Part 3: Deploying the Application (Coming Soon)
 
-This part I will be adding soon, will through the process of deploying your application. The application consists of three microservices: a Gateway, Products, and Orders. 
+This part I will be adding soon, will through the process of deploying your application on [Epinio](https://docs.epinio.io/). The application consists of three microservices: a Gateway, Products, and Orders. 
 
 ## Conclusion
 
-We understand that in the realm of cloud computing, things can quickly become overwhelming with a plethora of services, resources, and best practices. This project aims to approach the concept of developer experience. It serves as a practical guide, helping devops engineers find solutions to minimize the overhead simplifying the developer's journey from code to cloud.
+We understand that in the realm of cloud computing, things can quickly become overwhelming with a plethora of services, resources, and best practices. This project aims to approach the concept of developer experience. It serves as a practical guide and a challenge 
