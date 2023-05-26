@@ -12,7 +12,7 @@ In this phase, we focus on setting up a robust and scalable EKS cluster using `e
 
 ## Part 2: Preparing the Cluster for the Application
 
-Once our EKS cluster is up and running, we need to prepare it for our application. This involves a series of steps including installing the EBS CSI driver for our databases, setting up Cert-Manager for handling certificates, and deploying controllers for traffic management. Additionally, we guide you on how to deploy RabbitMQ, Postgres, and Redis on your cluster and configure their secrets. Detailed instructions are available in the [Part 2 README](./part-2/README.md).
+Once our EKS cluster is up and running, we need to prepare it for our application. This involves a series of steps including installing the EBS CSI driver for our databases, setting up Cert-Manager for handling certificates, and deploying controllers for traffic management. Additionally, we guide you on how to deploy RabbitMQ, Postgres, and Redis on cluster and configure their secrets. Detailed instructions are available in the [Part 2 README](./part-2/README.md).
 
 ## Part 3: Deploying the Application (Coming Soon)
 
