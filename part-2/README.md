@@ -109,6 +109,16 @@ Observation:
 2. Compare it with "aws-load-balancer-controller" Deployment "spec.selector.matchLabels"
 3. Both values should be same which traffic coming to "aws-load-balancer-webhook-service" on port 443 will be sent to port 9443 on "aws-load-balancer-controller" deployment related pods.
 
+## CREATE INGRESS CLASS
+### Navigate to root directory in part 2 to apply the ingress class
+```bash
+kubectl apply -f
+```
+- Verify ingress class
+```bash
+kubectl get ingressclass
+```
+
 ## DEPLOY THE RABBITMQ, POSTGRES AND REDIS:
 
 - Apply the namespace file to create the nameko namespace: <br>
