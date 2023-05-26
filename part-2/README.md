@@ -140,6 +140,7 @@ kubectl create secret generic rabbitmq --from-literal=RABBIT_PASSWORD=password_f
 ```bash
 kubectl get secret --namespace nameko cache-redis -o jsonpath="{.data.redis-password}" | base64 -d
 ```
+- Use the output of the previous command to store the secret in the etcd of the cluster using the following command:
 ```bash
 kubectl create secret generic cache-redis --from-literal=REDIS_PASSWORD=password_from_command
 ```
@@ -147,6 +148,7 @@ kubectl create secret generic cache-redis --from-literal=REDIS_PASSWORD=password
 ```bash
 kubectl get secret --namespace nameko db-postgresql -o jsonpath="{.data.postgres-password}" | base64 -d
 ``` 
+- Use the output of the previous command to store the secret in the etcd of the cluster using the following command:
 ```bash
 kubectl create secret generic db-postgresql --from-literal=DB_PASSWORD=password_from_command
 ```
