@@ -30,7 +30,7 @@ eksctl utils associate-iam-oidc-provider \
     --cluster lab1-eks \
     --approve
 ```
-
+isabela 
 ## 4. Nodegroup Creation
 **We will create a nodegroup with t3.medium nodes in the private subnet:**
 ```bash

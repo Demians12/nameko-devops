@@ -40,7 +40,7 @@ helm install cert-manager --namespace cert-manager --create-namespace jetstack/c
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
 ```
-- Install
+
 ```bash
 helm upgrade --install nginx ingress-nginx/ingress-nginx --namespace nginx --create-namespace --set controller.ingressClassResource.default=true
 ```
