@@ -39,7 +39,7 @@ spec:
           - name: RABBIT_PORT
             value: "5672"
           - name: RABBIT_USER
-            value: guest
+            value: user
           - name: RABBIT_PASSWORD
             valueFrom:
               secretKeyRef:

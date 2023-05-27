@@ -78,7 +78,7 @@ eksctl create iamserviceaccount \
 helm repo add eks https://aws.github.io/eks-charts
 helm repo update
 ```
-- List the vpc id. Use the vpc ID from the not default vpc: <br>
+- List vpc-id. Use the vpc ID from the not default vpc: <br>
 ```bash
 aws ec2 describe-vpcs
 ```
