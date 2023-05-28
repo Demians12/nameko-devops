@@ -1,0 +1,8 @@
+components.yaml
+epinio-values.yaml 
+
+.env
+
+dist/
+
+.vscode/
