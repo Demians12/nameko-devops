@@ -14,8 +14,10 @@ eksctl create cluster -f cluster.yaml
 
 # Deploy Amazon EBS CSI Driver
 - navigate to ebs folder. 
-- - Use this json to create a policy and run the command:
+- - Use this json to create a policy and run the command: <br>
+```bash
 aws iam create-policy --policy-name amazon_ebs_csi_driver --policy-document file://ebs_csi.json
+```
 
 ```json
 {
