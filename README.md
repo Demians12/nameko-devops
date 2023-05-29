@@ -16,8 +16,8 @@ Once EKS cluster is up and running, It is necessary to prepare it for the applic
 
 ## Part 3: Deploying Application in EKS using Epinio
 
-This part through the process of deploying [Epinio](https://docs.epinio.io/) in EKS. The application consists of three microservices: Gateway, Products, and Orders. Epinio leverages the process of deploying your app on a cluster. 
+This part through the process of deploying [Epinio](https://docs.epinio.io/) in EKS. We'll use Crossplane with Epinio to improve our experience once these tools work great together. We'll create services in Epinio Catalog using Crossplane. Another way to create infrastructure is using eksctl-yaml. Instead of use a lot of commands we can make this process simple just using yaml to provision eks cluster.
 
 ## Conclusion
 
-We understand that in the realm of cloud computing, things can quickly become overwhelming with a plethora of services, resources, and best practices. This project aims to approach the concept of developer experience. It serves as a practical guide and a challenge 
+We understand that in the realm of cloud computing, things can quickly become overwhelming with a plethora of services, resources, and best practices. This project aims to approach the concept of developer experience. It also serves as a practical guide and a challenge 
