@@ -1,0 +1,31 @@
+# ControllerConfig is a Crossplane resource used to configure
+# the behavior of the controller that is deployed as part of a Crossplane provider.
+apiVersion: pkg.crossplane.io/v1alpha1
+kind: ControllerConfig
+metadata:
+  # The name of this ControllerConfig resource
+  name: aws-config
+spec:
+  # Arguments to be passed to the controller when it's deployed.
+  # In this case, '--enable-external-secret-stores' likely changes how the controller handles 
+  # the storage of sensitive information like credentials.
+  args:
+  - --enable-external-secret-stores
+  
+# A Provider is a Crossplane representation of a cloud provider's APIs that have been 
+# packaged for use with Crossplane.
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  # The name of this Provider resource
+  name: crossplane-provider-aws
+spec:
+  # The Docker image that the Provider package uses. 
+  # This package contains all the CRDs and controllers that implement the AWS services in Crossplane.
+  package: crossplane/provider-aws:v0.29.0
+  # The controller configuration that this provider refers to.
+  # This tells the provider to use the previously defined ControllerConfig ('aws-config') 
+  # when deploying its controller.
+  controllerConfigRef:
+    name: aws-config

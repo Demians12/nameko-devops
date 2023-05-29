@@ -74,3 +74,30 @@ helm repo update
 helm upgrade --install epinio epinio/epinio --namespace epinio --create-namespace \
     --set global.domain=myepiniodomain.org
 ```
+
+# Install Crossplane
+```bash
+helm install crossplane \
+    --create-namespace --namespace crossplane-system \
+    crossplane-stable/crossplane \
+    --set args={--enable-external-secret-stores}
+```
+
+- Navigate to crossplane folder and apply it to create the file: <br>
+```bash
+kubectl apply --file provider-aws.yaml
+``` 
+
+- Let's create a service in the epinio catalog. We'll deploy a elasticache-redis. 
+- - These are the available services in my epinio: <br>
+```bash 
+epinio service catalog
+```
+![imagem](assets/catalog_epinio.png)
+
+- Epinio services are descriptions of Helm charts. Before deploy custom services we have to package these services using helm.
+- - Navigate to crossplane/epinio-services and run the following commands: <br> 
+```bash
+helm package ./elasticache -n epinio
+```
+

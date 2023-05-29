@@ -1,0 +1,11 @@
+apiVersion: application.epinio.io/v1
+kind: Service
+metadata:
+  name: elasticache-redis
+  namespace: epinio
+  annotations:
+    application.epinio.io/catalog-service-secret-types: connection.crossplane.io/v1alpha1
+spec:
+    name: crossplane
+    url: https://github.com/awslabs/crossplane-on-eks/tree/main/compositions/aws-provider/elasticache-redis
+  values: ""
