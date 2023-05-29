@@ -95,9 +95,17 @@ epinio service catalog
 ```
 ![imagem](assets/catalog_epinio.png)
 
+
 - Epinio services are descriptions of Helm charts. Before deploy custom services we have to package these services using helm.
-- - Navigate to crossplane/epinio-services and run the following commands: <br> 
+- Navigate to crossplane/epinio-services and run the following commands: <br> 
+
 ```bash
 helm package ./elasticache -n epinio
 ```
+- Let's create a file service.yaml that we'll use to send our package to Epinio catalog. Navigate to Crossplane folder and run the following command:
+```bash
+kubectl apply --file service.yaml
+```
+
+![catalog_epinio](assets/catalog_epinio2.png)
 

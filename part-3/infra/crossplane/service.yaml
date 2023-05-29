@@ -6,6 +6,12 @@ metadata:
   annotations:
     application.epinio.io/catalog-service-secret-types: connection.crossplane.io/v1alpha1
 spec:
-    name: crossplane
-    url: https://github.com/awslabs/crossplane-on-eks/tree/main/compositions/aws-provider/elasticache-redis
+  name: elasticache-redis
+  description: A Helm chart for Kubernetes
+  chart: elasticache-redis
+  chartVersion: 1.0.0
+  appVersion: 1.0.0
+  helmRepo:
+    name: demians12
+    url: https://github.com/Demians12/nameko-devops/blob/main/part-3/infra/crossplane/epinio-services/elasticache-redis-1.0.0.tgz
   values: ""
