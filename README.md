@@ -4,7 +4,7 @@ This is a comprehensive solution to deploy a microservices-based application on 
 
 1. [Part 1](./part-1/README.md): Setting up an EKS Cluster using eksctl. 
 2. [Part 2](./part-2/README.md): Preparing the Cluster for the Application.
-3. Part 3: Deploying the Application (Coming Soon).
+3. [Part 3](./part-3README.md): Deploying Epinio in EKS cluster and using crossplane to create new services to Epinio Catalog.
 
 ## Part 1: Setting up an EKS Cluster
 
