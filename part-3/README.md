@@ -90,12 +90,11 @@ kubectl apply --file provider-aws.yaml
 # Create a epinio service and deploy to its catalog
 
 - Let's create a service in the epinio catalog. We'll deploy a elasticache-redis. 
-- - These are the available services in my epinio: <br>
+- These are the available services in my epinio catalog: <br>
 ```bash 
 epinio service catalog
 ```
 ![imagem](assets/catalog_epinio.png)
-
 
 - Epinio services are descriptions of Helm charts. Before deploy custom services we have to package these services using helm.
 - Navigate to crossplane/epinio-services and run the following commands: <br> 
