@@ -19,7 +19,7 @@ eksctl get cluster
 
 ## 2. Key Pair Creation
 ```bash 
-aws ec2 create-key-pair --key-name lab1-key >> ~/.ssh/lab1.pem
+aws ec2 create-key-pair --key-name lab1-key >> ~/.ssh/id_rsa.pub
 ```
 ## 3. Setup OIDC Provider
 **In order to enable IAM Roles for ServiceAccounts, we need to associate an IAM OpenID Connect (OIDC) provider with our cluster:** <br>

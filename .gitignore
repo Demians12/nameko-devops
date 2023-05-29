@@ -6,3 +6,7 @@ epinio-values.yaml
 dist/
 
 .vscode/
+
+aws-creds.conf
+crossplane-services
+manifest.yaml

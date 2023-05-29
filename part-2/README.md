@@ -162,3 +162,18 @@ kubectl get secret --namespace nameko db-postgresql -o jsonpath="{.data.postgres
 ```bash
 kubectl create secret generic db-postgresql --from-literal=DB_PASSWORD=password_from_command
 ```
+# Deploying application to EKS
+
+- Navigate to charts folder and run the following commands:
+
+```bash
+helm install gateway ./gateway/ -n nameko
+```
+```bash
+helm install orders ./orders/ -n nameko
+```
+```bash
+helm install products ./products/ -n nameko
+```
+
+Verifying 

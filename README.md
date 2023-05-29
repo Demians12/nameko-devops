@@ -14,9 +14,9 @@ In this phase, we focus on setting up a robust and scalable EKS cluster using `e
 
 Once EKS cluster is up and running, It is necessary to prepare it for the application. This involves a series of steps including steps of deploying RabbitMQ, Postgres, and Redis on cluster and configure their secrets. Detailed instructions are available in the [Part 2 README](./part-2/README.md).
 
-## Part 3: Deploying the Application (Coming Soon)
+## Part 3: Deploying Application in EKS using Epinio
 
-This part I will be adding soon, will through the process of deploying your application on [Epinio](https://docs.epinio.io/). The application consists of three microservices: a Gateway, Products, and Orders. 
+This part through the process of deploying [Epinio](https://docs.epinio.io/) in EKS. The application consists of three microservices: Gateway, Products, and Orders. Epinio leverages the process of deploying your app on a cluster. 
 
 ## Conclusion
 
