@@ -83,14 +83,14 @@ helm install crossplane \
     --set args={--enable-external-secret-stores}
 ```
 
-- Navigate to crossplane folder and apply it to create the file: <br>
+- Navigate to crossplane folder and apply it: <br>
 ```bash
 kubectl apply --file provider-aws.yaml
 ``` 
 # Create a epinio service and deploy to its catalog
 
-- Let's create a service in the epinio catalog. We'll deploy a elasticache-redis. 
-- These are the available services in my epinio catalog: <br>
+- Let's create a new service in the epinio catalog. We'll deploy a elasticache-redis. 
+- These are the available services in the epinio catalog: <br>
 ```bash 
 epinio service catalog
 ```
