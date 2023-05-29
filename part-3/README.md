@@ -1,4 +1,4 @@
-# Improving the experience
+# Improving the deploying
 
 We created a cluster where we deployed some services. We also enabled add-ons such as csi driver, policies etc. So it was a lot of commands just to create a cluster and configure it. A best practice would be using Terraform or Crossplane to provisioning the infrastructure. Here we'll use Crossplane to provision the infrastructure, eksctl-yaml to create the cluster and Epinio to deploy the application. 
 
