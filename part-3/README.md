@@ -87,6 +87,7 @@ helm install crossplane \
 ```bash
 kubectl apply --file provider-aws.yaml
 ``` 
+# Create a epinio service and deploy to its catalog
 
 - Let's create a service in the epinio catalog. We'll deploy a elasticache-redis. 
 - - These are the available services in my epinio: <br>
