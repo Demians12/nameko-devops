@@ -82,7 +82,8 @@ jobs:
          curl -o .github/workflows/outputs.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/outputs.tf
          curl -o .github/workflows/variables.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/variables.tf
          curl -o .github/workflows/versions.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/versions.tf
-
+         curl -o .github/workflows/vpc-flow-logs.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/vpc-flow-logs.tf
+         
     - name: tfsec scan
       uses: aquasecurity/tfsec-action@v1.0.0
       with:
