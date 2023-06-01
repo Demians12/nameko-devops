@@ -78,15 +78,15 @@ jobs:
     - name: Download Terraform files
       id: curl
       run: |
-        curl -o main.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/main.tf
-        curl -o outputs.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/outputs.tf
-        curl -o variables.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/variables.tf
-        curl -o versions.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/versions.tf
+        curl -o .github/worksflows/main.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/main.tf
+        curl -o .github/worksflows/outputs.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/outputs.tf
+        curl -o .github/worksflows/variables.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/variables.tf
+        curl -o .github/worksflows/versions.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/versions.tf
 
     - name: tfsec scan
       uses: aquasecurity/tfsec-action@v1.0.0
       with:
-        working_directory: .
+        working_directory: .github/workflows
         format: json
         soft_fail: true
 
@@ -106,17 +106,17 @@ jobs:
        context: .github/workflows
        file: .github/workflows/Dockerfile
        push: true
-       tags: '${{ secrets.DOCKER_HUB_USERNAME }}/vpc-module:4.5.6'
+       tags: '${{ secrets.DOCKER_HUB_USERNAME }}/vpc-module:5.0.0'
 
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
       with:
-        image-ref: '${{ secrets.DOCKER_HUB_USERNAME }}/vpc-module:4.5.6'
-        format: 'table'
-        exit-code: '1'
-        ignore-unfixed: true
-        vuln-type: 'os,library'
-        severity: 'CRITICAL'
+       image-ref: '${{ secrets.DOCKER_HUB_USERNAME }}/vpc-module:5.0.0'
+       format: 'table'
+       exit-code: '1'
+       ignore-unfixed: true
+       vuln-type: 'os,library'
+       severity: 'CRITICAL'
 
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
