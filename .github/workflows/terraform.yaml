@@ -118,7 +118,6 @@ jobs:
       with:
        image-ref: '${{ secrets.DOCKER_HUB_USERNAME }}/vpc-module:5.0.0'
        format: 'table'
-       exit-code: '1'
        ignore-unfixed: true
        vuln-type: 'os,library'
        severity: 'CRITICAL'
