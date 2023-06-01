@@ -79,7 +79,7 @@ jobs:
       id: curl
       run: |
         curl -o main.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/main.tf
-        curl -o output.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/outputs.tf
+        curl -o outputs.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/outputs.tf
         curl -o variables.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/variables.tf
         curl -o versions.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/versions.tf
 
