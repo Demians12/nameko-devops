@@ -13,6 +13,5 @@ EXPOSE 80
 
 RUN terraform init
 RUN terraform fmt -check
-RUN terraform plan -input=false
 
 CMD ["terraform", "apply"]
