@@ -83,15 +83,12 @@ jobs:
         curl -o variables.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/variables.tf
         curl -o versions.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/versions.tf
 
-    - name: Run tfsec actions
-      uses: aquasecurity/tfsec-action@v1.0.3
+    - name: tfsec scan
+      uses: aquasecurity/tfsec-action@v1.0.0
       with:
-        sarif_file: tfsec.sarif
-
-    - name: Upload SARIF file
-      uses: github/codeql-action/upload-sarif@v1
-      with:
-        sarif_file: tfsec.sarif
+        working_directory: .
+        format: json
+        soft_fail: true
 
     - name: Terraform Init
       run: terraform init
@@ -113,18 +110,16 @@ jobs:
         push: true
         tags: '${{ secrets.DOCKER_HUB_USERNAME }}/vpc-module:4.5.6'
 
-    - name: Scan image with Trivy
-      uses: aquasecurity/trivy-action@0.10.0
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
       with:
         image-ref: '${{ secrets.DOCKER_HUB_USERNAME }}/vpc-module:4.5.6'
-        format: 'sarif'
-        output: 'trivy-results.sarif'
+        format: 'table'
+        exit-code: '1'
+        ignore-unfixed: true
+        vuln-type: 'os,library'
+        severity: 'CRITICAL'
 
-    - name: Upload Trivy scan results to GitHub Security tab
-      uses: github/codeql-action/upload-sarif@v2
-      if: always()
-      with:
-        sarif_file: 'trivy-results.sarif'
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
