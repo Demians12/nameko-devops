@@ -57,6 +57,8 @@ jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
+    environment:
+      name: development
 
     defaults:
       run:
