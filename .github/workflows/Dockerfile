@@ -2,17 +2,17 @@
 FROM hashicorp/terraform:1.4.6
 
 
+
 WORKDIR /app
 
 
-COPY main.tf outputs.tf variables.tf versions.tf /app/
+COPY . /app
 
 
-RUN apk add --no-cache curl
-
+EXPOSE 80
 
 RUN terraform init
 RUN terraform fmt -check
 RUN terraform plan -input=false
 
-CMD ["echo", "Docker container is running!"]
+CMD ["terraform", "apply"]
