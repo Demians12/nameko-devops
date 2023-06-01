@@ -78,10 +78,10 @@ jobs:
     - name: Download Terraform files
       id: curl
       run: |
-        curl -o .github/worksflows/main.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/main.tf
-        curl -o .github/worksflows/outputs.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/outputs.tf
-        curl -o .github/worksflows/variables.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/variables.tf
-        curl -o .github/worksflows/versions.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/versions.tf
+         curl -o .github/workflows/main.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/main.tf
+         curl -o .github/workflows/outputs.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/outputs.tf
+         curl -o .github/workflows/variables.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/variables.tf
+         curl -o .github/workflows/versions.tf https://raw.githubusercontent.com/terraform-aws-modules/terraform-aws-vpc/master/versions.tf
 
     - name: tfsec scan
       uses: aquasecurity/tfsec-action@v1.0.0
