@@ -133,6 +133,11 @@ managedNodeGroups:
         efs: true
 ```
 
+# CONFIGURE KUBECTL
+```bash
+aws eks --region us-east-1 update-kubeconfig --name lab1-eks
+```
+
 - Run the commands: <br>
 ```bash
 export CLUSTER_ENDPOINT="$(aws eks describe-cluster --name ${CLUSTER_NAME} --query "cluster.endpoint" --output text)"
