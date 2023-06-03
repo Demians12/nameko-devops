@@ -34,7 +34,7 @@ managedNodeGroups:
       withAddonPolicies:
         externalDNS: true
         imageBuilder: true
-        autoScaler: true 
+        autoScaler: false # false to use karpenter, if true, no use karpenter
         albIngress: true
         appMesh: true
         appMeshPreview: true
