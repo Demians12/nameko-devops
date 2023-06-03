@@ -1,0 +1,46 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: ${CLUSTER_NAME}
+  region: us-east-1
+  version: '1.26'
+  tags:
+    karpenter.sh/discovery: ${CLUSTER_NAME}
+
+iam:
+  withOIDC: true
+  serviceAccounts:
+  - metadata:
+      name: karpenter
+      namespace: karpenter
+    roleName: ${CLUSTER_NAME}-karpenter
+    attachPolicyARNs:
+    - arn:aws:iam::${AWS_ACCOUNT_ID}:policy/KarpenterControllerPolicy-${CLUSTER_NAME}
+    roleOnly: true
+
+managedNodeGroups:
+  - name: lab2-eks-ng-private1
+    instanceType: t3.medium
+    privateNetworking: true
+    minSize: 2
+    maxSize: 6
+    volumeSize: 30
+    desiredCapacity: 3
+    ssh:
+      allow: true
+      publicKeyPath: ~/.ssh/awskey.pub
+    iam:
+      withAddonPolicies:
+        externalDNS: true
+        imageBuilder: true
+        autoScaler: true 
+        albIngress: true
+        appMesh: true
+        appMeshPreview: true
+        awsLoadBalancerController: true
+        xRay: true
+        cloudWatch: true
+        ebs: true
+        fsx: true
+        efs: true

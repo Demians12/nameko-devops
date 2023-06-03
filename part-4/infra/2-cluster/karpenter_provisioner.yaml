@@ -1,0 +1,19 @@
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: default
+spec:
+  requirements:
+    - key: karpenter.sh/capacity-type
+      operator: In
+      values: ["on-demand"]
+  limits:
+    resources:
+      cpu: 1000
+  provider:
+    instanceProfile: eksctl-KarpenterNodeInstanceProfile-lab1-eks
+    subnetSelector:
+      karpenter.sh/discovery: lab1-eks # must match the tag set in the config file
+    securityGroupSelector:
+      karpenter.sh/discovery: lab1-eks # must match the tag set in the config file
+  ttlSecondsAfterEmpty: 30
