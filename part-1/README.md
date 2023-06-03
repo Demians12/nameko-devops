@@ -9,7 +9,7 @@ First, we will create an EKS cluster in the AWS us-east-1 region. You can use th
 eksctl create cluster --name=lab1-eks \
                       --region=us-east-1 \
                       --zones=us-east-1a,us-east-1b \
-                      --version="1.25" \
+                      --version="1.27" \
                       --without-nodegroup
 ```
 ## Check the created cluster with:
