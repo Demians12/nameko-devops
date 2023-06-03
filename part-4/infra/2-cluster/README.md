@@ -21,7 +21,7 @@ export AWS_ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output te
 ```bash
 export TEMPOUT=$(mktemp)
 ```
-# --------------------------------------------------------------------------------
+# ----------------------------------------------------------------------
 # CREATE A CLUSTER: <br>
 - First create a key to import to aws and update the ssh keypath in the file: <br>
 
