@@ -10,14 +10,6 @@ metadata:
 
 iam:
   withOIDC: true
-  serviceAccounts:
-  - metadata:
-      name: karpenter
-      namespace: karpenter
-    roleName: ${CLUSTER_NAME}-karpenter
-    attachPolicyARNs:
-    - arn:aws:iam::${AWS_ACCOUNT_ID}:policy/KarpenterControllerPolicy-${CLUSTER_NAME}
-    roleOnly: true
 
 karpenter:
   version: 'v0.27.5'
