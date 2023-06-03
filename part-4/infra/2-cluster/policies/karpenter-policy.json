@@ -1,0 +1,11 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "eks:DescribeCluster",
+            "Resource": "arn:aws:eks:us-east-1:024783248564:cluster/lab1-eks",
+            "Sid": "EKSClusterEndpointLookup"
+        }
+    ]
+}

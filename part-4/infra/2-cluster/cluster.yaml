@@ -19,8 +19,14 @@ iam:
     - arn:aws:iam::${AWS_ACCOUNT_ID}:policy/KarpenterControllerPolicy-${CLUSTER_NAME}
     roleOnly: true
 
+karpenter:
+  version: 'v0.27.5'
+  createServiceAccount: true # default is false
+  defaultInstanceProfile: 'KarpenterNodeInstanceProfile' 
+  withSpotInterruptionQueue: true 
+
 managedNodeGroups:
-  - name: lab2-eks-ng-private1
+  - name: lab1-eks-ng-private1
     instanceType: t3.medium
     privateNetworking: true
     minSize: 2

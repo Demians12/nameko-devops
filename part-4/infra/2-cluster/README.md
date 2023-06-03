@@ -40,6 +40,7 @@ echo '{
                 "ec2:DescribeImages",
                 "ec2:RunInstances",
                 "ec2:DescribeSubnets",
+                "ec2:DescribeCluster",
                 "ec2:DescribeSecurityGroups",
                 "ec2:DescribeLaunchTemplates",
                 "ec2:DescribeInstances",
@@ -77,6 +78,14 @@ echo '{
 ```bash
 aws iam create-policy --policy-name KarpenterControllerPolicy-${CLUSTER_NAME} --policy-document file://controller-policy.json
 ```
+- Get Worker node IAM Role ARN: <br>
+```bash
+kubectl -n kube-system describe configmap aws-auth
+```
+
+- Attach policy to a role. Here you must use your current node IAM role and ID account provided in the previous command: <br>
+```bash
+aws iam attach-role-policy --role-name eksctl-lab1-eks-nodegroup-lab1-ek-NodeInstanceRole-JFJFV2Y81725 --policy-arn arn:aws:iam::<account_id>:policy/KarpenterControllerPolicy-${CLUSTER_NAME}
 
 - Next be ensure the yaml will get the values stored in the environment variables and create the cluster: <br>
 
