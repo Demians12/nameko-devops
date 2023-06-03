@@ -73,7 +73,7 @@ echo '{
 }' > controller-policy.json
 ``` 
 
-- Now create an IAM role using the file controller-policy.json: <br>
+- Now create an policy using the file controller-policy.json: <br>
 ```bash
 aws iam create-policy --policy-name KarpenterControllerPolicy-${CLUSTER_NAME} --policy-document file://controller-policy.json
 ```
